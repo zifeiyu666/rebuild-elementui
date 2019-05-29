@@ -1,0 +1,112 @@
+@import './common/icon.scss';
+@import './common/var.scss';
+@import './mixins/mixins.scss';
+
+@include b(radio) {
+  color: $radio-font-color;
+  font-weight: $radio-font-weight;
+  line-height: 1;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  outline: none;
+  font-size: $font-size-base;
+  margin-right: 30px;
+
+
+  @include when(checked) {
+    .zf-radio__inner {
+      border-color: $radio-checked-input-border-color;
+      background: $radio-checked-icon-color;
+
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .zf-radio__label {
+      color: $radio-checked-font-color;
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    border-color: $border-color-lighter;
+
+    .zf-radio__inner {
+      background-color: $radio-disabled-input-fill;
+      border-color: $radio-disabled-input-border-color;
+      cursor: not-allowed;
+
+      &::after {
+        cursor: not-allowed;
+        background-color: $radio-disabled-icon-color;
+      }
+
+    }
+
+    .zf-radio__label {
+      color: scale-color($radio-font-color, $lightness: 50%);
+    }
+
+    &.is-checked {
+      .zf-radio__inner {
+        background-color: $radio-disabled-checked-input-fill;
+        border-color: $radio-disabled-checked-input-border-color;
+
+        &::after {
+          background-color: $radio-disabled-checked-icon-color;
+        }
+      }
+    }
+  }
+
+  @include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+
+  @include e(inner) {
+    border: $radio-input-border;
+    border-radius: $radio-input-border-radius;
+    width: $radio-input-width;
+    height: $radio-input-height;
+    background-color: $radio-input-background-color;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
+
+    &:hover {
+      border-color: $radio-input-border-color-hover;
+    }
+
+    &::after {
+      width: 4px;
+      height: 4px;
+      border-radius: $radio-input-border-radius;
+      background-color: $color-white;
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform .15s ease-in;
+    }
+  }
+
+  @include e(label) {
+    font-size: $radio-font-size;
+    padding-left: 10px;
+    vertical-align: middle;
+  }
+}

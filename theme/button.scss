@@ -1,0 +1,94 @@
+@charset "UTF-8";
+@import './common/var.scss';
+@import "mixins/mixins.scss";
+
+@include b(btn) {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 1;
+  background-color: $btn-default-background-color;
+  border: $border-base;
+  border-color: $btn-default-border-color;
+  color: $text-color-base;
+  text-align: center;
+  outline: none;
+  @include btn-size($btn-padding-vertical, $btn-padding-horizontal, $btn-font-size, $btn-border-radius);
+
+  &:hover,
+  &:focus {
+    color: $color-primary;
+    border-color: scale-color($color-primary, $lightness: $color-hover-border-percentage);
+    background-color: scale-color($color-primary, $lightness: $color-hover-bg-percentage);
+  }
+
+  &:active {
+    border-color: scale-color($color-primary, $lightness: $color-active-border-percentage);
+  }
+
+
+
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $btn-padding-vertical;
+  }
+
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 23px;
+
+
+  }
+
+
+
+  @include when(disabled) {
+
+    &,
+    &:hover,
+    &:focus {
+      cursor: not-allowed;
+      color: $btn-disabled-font-color;
+      background-color: $btn-default-background-color;
+      border: $border-base;
+      border-color: $btn-default-border-color;
+    }
+  }
+
+  @include when(loading) {
+    pointer-events: none;
+
+    & .zf-icon-loading {
+      position: relative;
+      left: -4px;
+    }
+  }
+
+  @include m(small) {
+    @include btn-size($btn-small-padding-vertical, $btn-small-padding-horizontal, $btn-small-font-size, $btn-small-border-radius);
+
+    @include when(circle) {
+      padding: $btn-small-padding-vertical;
+    }
+  }
+
+  @include m(primary) {
+    @include btn-variant ($btn-primary-font-color, $btn-primary-background-color, $btn-primary-border-color);
+  }
+
+  @include m(success) {
+    @include btn-variant ($btn-success-font-color, $btn-success-background-color, $btn-success-border-color);
+  }
+
+  @include m(warning) {
+    @include btn-variant ($btn-warning-font-color, $btn-warning-background-color, $btn-warning-border-color);
+  }
+
+  @include m(info) {
+    @include btn-variant ($btn-info-font-color, $btn-info-background-color, $btn-info-border-color);
+  }
+
+  @include m(danger) {
+    @include btn-variant ($btn-danger-font-color, $btn-danger-background-color, $btn-danger-border-color);
+  }
+
+}

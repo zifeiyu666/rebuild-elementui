@@ -1,0 +1,162 @@
+@import './common/var.scss';
+@import './mixins/mixins.scss';
+
+@include b(input) {
+  position: relative;
+  font-size: $font-size-base;
+  display: inline-block;
+  width: 100%;
+
+  &:hover {
+    .zf-input__icon {
+      opacity: .4 !important;
+    }
+  }
+
+  & {
+    .zf-input__icon {
+      position: absolute;
+      right: 5px;
+      top: 0px;
+      height: 100%;
+      transition: all .3s;
+
+      &:before {
+        display: inline-block;
+        height: 100%;
+        line-height: $input-height;
+        vertical-align: middle;
+      }
+
+      &:hover {
+        opacity: .6 !important;
+        cursor: pointer;
+      }
+    }
+
+    .zf-input__staticIcon {
+      position: absolute;
+      top: 0px;
+      height: 100%;
+      opacity: .4 !important;
+
+      &:before {
+        display: inline-block;
+        height: 100%;
+        line-height: $input-height;
+        vertical-align: middle;
+      }
+
+      @include when(left) {
+        left: 5px;
+      }
+
+      @include when(right) {
+        right: 5px;
+      }
+    }
+  }
+
+  @include scroll-bar;
+
+  @include e(inner) {
+    -webkit-appearance: none;
+    background-color: $input-background-color;
+    border-radius: $input-border-radius;
+    border: $input-border;
+    color: $input-font-color;
+    display: inline-block;
+    font-size: inherit;
+    height: $input-height;
+    box-sizing: border-box;
+    outline: none;
+    padding: 0 15px;
+    transition: $border-transition-base;
+    width: 100%;
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: $input-hover-border;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $input-focus-border;
+    }
+  }
+
+  @include when(icon) {
+    .zf-input__inner {
+      padding-right: 30px;
+    }
+  }
+
+  @include when(left) {
+    .zf-input__inner {
+      padding-left: 30px;
+    }
+  }
+
+  @include when(right) {
+    .zf-input__inner {
+      padding-right: 30px;
+    }
+  }
+
+  @include when(disabled) {
+    .zf-input__inner {
+      background-color: $input-disabled-fill;
+      border-color: $input-disabled-border;
+      color: $input-disabled-color;
+      cursor: not-allowed;
+
+
+      &::placeholder {
+        color: $input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  [class*='zf-icon-'] {
+    opacity: 0
+  }
+}
+
+
+@include b(textarea) {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: $font-size-base;
+
+  @include e(inner) {
+    display: block;
+    padding: 5px 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: inherit;
+    color: $input-font-color;
+    border: $input-border;
+    border-radius: $input-border-radius;
+    background-color: $input-background-color;
+    transition: $border-transition-base;
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    &:hover {
+      border-color: $input-hover-border;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $input-focus-border;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "./common/icon.scss";
+@import "./button.scss";
+@import "./link.scss";
+@import "./input.scss";
+@import "./radio.scss";
+@import "./radio-button.scss";
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit
+}
